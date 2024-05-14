@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -56,6 +56,7 @@ class _MyAppState extends State<MyApp> {
 
         if (operacao == '/') {
           if (double.parse(numero) * 1 == 0) {
+            // ignore: avoid_print
             print('Erro: divisão por zero');
             return;
           }
@@ -87,10 +88,6 @@ class _MyAppState extends State<MyApp> {
             numero = resultado.toString();
           });
         }
-        // setState(() {
-        //   numero = resultado.toString();
-        //   numero = numero.replaceAll('.', ',');
-        // });
         break;
       case 'AC':
         setState(() {
@@ -117,7 +114,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('Calculadora')),
+          title: const Center(child: Text('Calculadora')),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -125,7 +122,7 @@ class _MyAppState extends State<MyApp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(numero, style: TextStyle(fontSize: 72)),
+                Text(numero, style: const TextStyle(fontSize: 72)),
               ],
             ),
             Row(
@@ -134,8 +131,8 @@ class _MyAppState extends State<MyApp> {
                 GestureDetector(
                     onTap: () => calcular('AC'),
                     child: const Text('AC', style: TextStyle(fontSize: 48))),
-                Text(''),
-                Text(''),
+                const Text(''),
+                const Text(''),
                 GestureDetector(
                     onTap: () => calcular('<X'),
                     child: Image.asset(
@@ -149,13 +146,13 @@ class _MyAppState extends State<MyApp> {
               children: [
                 GestureDetector(
                     onTap: () => calcular('7'),
-                    child: Text('7', style: TextStyle(fontSize: 48))),
+                    child: const Text('7', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('8'),
-                    child: Text('8', style: TextStyle(fontSize: 48))),
+                    child: const Text('8', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('9'),
-                    child: Text('9', style: TextStyle(fontSize: 48))),
+                    child: const Text('9', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('/'),
                     child: Image.asset('assets/images/divisao.png')),
@@ -166,13 +163,13 @@ class _MyAppState extends State<MyApp> {
               children: [
                 GestureDetector(
                     onTap: () => calcular('4'),
-                    child: Text('4', style: TextStyle(fontSize: 48))),
+                    child: const Text('4', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('5'),
-                    child: Text('5', style: TextStyle(fontSize: 48))),
+                    child: const Text('5', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('6'),
-                    child: Text('6', style: TextStyle(fontSize: 48))),
+                    child: const Text('6', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('X'),
                     child: Image.asset(
@@ -185,13 +182,13 @@ class _MyAppState extends State<MyApp> {
               children: [
                 GestureDetector(
                     onTap: () => calcular('1'),
-                    child: Text('1', style: TextStyle(fontSize: 48))),
+                    child: const Text('1', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('2'),
-                    child: Text('2', style: TextStyle(fontSize: 48))),
+                    child: const Text('2', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('3'),
-                    child: Text('3', style: TextStyle(fontSize: 48))),
+                    child: const Text('3', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('-'),
                     child: Image.asset(
@@ -204,10 +201,10 @@ class _MyAppState extends State<MyApp> {
               children: [
                 GestureDetector(
                     onTap: () => calcular('0'),
-                    child: Text('0', style: TextStyle(fontSize: 48))),
+                    child: const Text('0', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular(','),
-                    child: Text(',', style: TextStyle(fontSize: 48))),
+                    child: const Text(',', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('='),
                     child: Image.asset(
@@ -220,7 +217,7 @@ class _MyAppState extends State<MyApp> {
                     )),
               ],
             ),
-            Text('======================================'),
+            const Text('======================================'),
           ],
         ),
       ),
