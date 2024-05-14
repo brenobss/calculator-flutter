@@ -97,6 +97,13 @@ class _MyAppState extends State<MyApp> {
           numero = '0';
         });
         break;
+      case '<X':
+        setState(() {
+          if (numero.isNotEmpty) {
+            numero = numero.substring(0, numero.length - 1);
+          }
+        });
+        break;
       default:
         setState(() {
           numero += tecla;
@@ -131,7 +138,10 @@ class _MyAppState extends State<MyApp> {
                 Text(''),
                 GestureDetector(
                     onTap: () => calcular('<X'),
-                    child: Text('<X', style: TextStyle(fontSize: 48))),
+                    child: Image.asset(
+                      'assets/images/arrow_left.png',
+                      width: 52,
+                    )),
               ],
             ),
             Row(
@@ -148,7 +158,7 @@ class _MyAppState extends State<MyApp> {
                     child: Text('9', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('/'),
-                    child: Text('/', style: TextStyle(fontSize: 48))),
+                    child: Image.asset('assets/images/divisao.png')),
               ],
             ),
             Row(
@@ -165,7 +175,9 @@ class _MyAppState extends State<MyApp> {
                     child: Text('6', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('X'),
-                    child: Text('X', style: TextStyle(fontSize: 48))),
+                    child: Image.asset(
+                      'assets/images/multi.png',
+                    )),
               ],
             ),
             Row(
@@ -182,7 +194,9 @@ class _MyAppState extends State<MyApp> {
                     child: Text('3', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('-'),
-                    child: Text('-', style: TextStyle(fontSize: 48))),
+                    child: Image.asset(
+                      'assets/images/menos.png',
+                    )),
               ],
             ),
             Row(
@@ -196,13 +210,17 @@ class _MyAppState extends State<MyApp> {
                     child: Text(',', style: TextStyle(fontSize: 48))),
                 GestureDetector(
                     onTap: () => calcular('='),
-                    child: Text('=', style: TextStyle(fontSize: 48))),
+                    child: Image.asset(
+                      'assets/images/igual.png',
+                    )),
                 GestureDetector(
                     onTap: () => calcular('+'),
-                    child: Text('+', style: TextStyle(fontSize: 48))),
+                    child: Image.asset(
+                      'assets/images/adicao.png',
+                    )),
               ],
             ),
-            Text('Coluna 6'),
+            Text('======================================'),
           ],
         ),
       ),
