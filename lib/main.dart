@@ -12,7 +12,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String numero = '';
+  double primeiroNumero = 0.0;
+  String operacao = '';
+  String numero = '0';
   void calcular(String tecla) {
     switch (tecla) {
       case '0':
@@ -25,9 +27,70 @@ class _MyAppState extends State<MyApp> {
       case '7':
       case '8':
       case '9':
+      case ',':
         setState(() {
           numero += tecla;
+          numero = numero.replaceAll(',', '.');
+          if (numero.contains('.')) {
+          } else {
+            int numeroInt = int.parse(numero);
+            numero = numeroInt.toString();
+          }
+          numero = numero.replaceAll('.', ',');
         });
+        break;
+
+      case '+':
+      case '-':
+      case 'X':
+      case '/':
+        operacao = tecla;
+        numero = numero.replaceAll(',', '. ');
+        primeiroNumero = double.parse(numero);
+        numero = numero.replaceAll('.', ',');
+        numero = '0';
+        break;
+
+      case '=':
+        double resultado = 0.0;
+
+        if (operacao == '/') {
+          if (double.parse(numero) * 1 == 0) {
+            print('Erro: divisão por zero');
+            return;
+          }
+        }
+
+        if (operacao == '+') {
+          resultado = primeiroNumero + double.parse(numero);
+        }
+        if (operacao == '-') {
+          resultado = primeiroNumero - double.parse(numero);
+        }
+        if (operacao == 'X') {
+          resultado = primeiroNumero * double.parse(numero);
+        }
+        if (operacao == '/') {
+          resultado = primeiroNumero / double.parse(numero);
+        }
+
+        String resultadoString = resultado.toString();
+
+        List<String> resultadoPartes = resultadoString.split('.');
+
+        if (int.parse(resultadoPartes[1]) * 1 == 0) {
+          setState(() {
+            numero = int.parse(resultadoPartes[0]).toString();
+          });
+        } else {
+          setState(() {
+            numero = resultado.toString();
+          });
+        }
+        // setState(() {
+        //   numero = resultado.toString();
+        //   numero = numero.replaceAll('.', ',');
+        // });
         break;
       case 'AC':
         setState(() {
@@ -118,7 +181,7 @@ class _MyAppState extends State<MyApp> {
                     onTap: () => calcular('3'),
                     child: Text('3', style: TextStyle(fontSize: 48))),
                 GestureDetector(
-                    onTap: () => calcular('4'),
+                    onTap: () => calcular('-'),
                     child: Text('-', style: TextStyle(fontSize: 48))),
               ],
             ),
